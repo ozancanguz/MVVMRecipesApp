@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/drawable/ic_foodjoke.xml" value="0.1" />
         <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/layout/activity_splash.xml" value="0.20416666666666666" />
         <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/layout/fragment_favorite_recipes.xml" value="0.20416666666666666" />
