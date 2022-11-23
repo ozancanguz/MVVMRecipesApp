@@ -3,7 +3,7 @@ package com.ozancanguz.mvvmrecipesapp.Splash
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ozancanguz.mvvmrecipesapp.MainActivity
+import com.ozancanguz.mvvmrecipesapp.ui.MainActivity
 import com.ozancanguz.mvvmrecipesapp.R
 
 class SplashActivity : AppCompatActivity() {

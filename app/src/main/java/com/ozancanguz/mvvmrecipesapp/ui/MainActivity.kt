@@ -1,4 +1,4 @@
-package com.ozancanguz.mvvmrecipesapp
+package com.ozancanguz.mvvmrecipesapp.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -6,6 +6,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.ozancanguz.mvvmrecipesapp.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 //API Key: 97dd239ca98e45d38e09b1982f6552c6
