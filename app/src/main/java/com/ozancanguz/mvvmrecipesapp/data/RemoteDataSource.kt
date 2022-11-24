@@ -1,5 +1,6 @@
-package com.ozancanguz.mvvmrecipesapp
+package com.ozancanguz.mvvmrecipesapp.data
 
+import com.ozancanguz.mvvmrecipesapp.data.network.FoodRecipesApi
 import com.ozancanguz.mvvmrecipesapp.models.FoodRecipe
 import retrofit2.Response
 import javax.inject.Inject

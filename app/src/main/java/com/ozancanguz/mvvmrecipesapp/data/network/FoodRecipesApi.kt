@@ -1,4 +1,4 @@
-package com.ozancanguz.mvvmrecipesapp
+package com.ozancanguz.mvvmrecipesapp.data.network
 
 import com.ozancanguz.mvvmrecipesapp.models.FoodRecipe
 import retrofit2.Response

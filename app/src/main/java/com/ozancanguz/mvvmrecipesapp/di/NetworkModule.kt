@@ -1,9 +1,7 @@
 package com.ozancanguz.mvvmrecipesapp.di
 
-import android.app.Application
 import com.ozancanguz.mvvmrecipesapp.Contants.Constants.Companion.BASE_URL
-import com.ozancanguz.mvvmrecipesapp.FoodRecipesApi
-import com.ozancanguz.mvvmrecipesapp.models.FoodRecipe
+import com.ozancanguz.mvvmrecipesapp.data.network.FoodRecipesApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
