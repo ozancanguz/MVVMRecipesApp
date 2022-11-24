@@ -1,4 +1,4 @@
-package com.ozancanguz.mvvmrecipesapp.Contants
+package com.ozancanguz.mvvmrecipesapp.util.Contants
 
 
 class Constants {

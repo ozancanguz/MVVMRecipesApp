@@ -1,6 +1,6 @@
 package com.ozancanguz.mvvmrecipesapp.di
 
-import com.ozancanguz.mvvmrecipesapp.Contants.Constants.Companion.BASE_URL
+import com.ozancanguz.mvvmrecipesapp.util.Contants.Constants.Companion.BASE_URL
 import com.ozancanguz.mvvmrecipesapp.data.network.FoodRecipesApi
 import dagger.Module
 import dagger.Provides
