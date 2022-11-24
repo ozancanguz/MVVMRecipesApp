@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightGray"
+    android:background="@color/lightMediumGray"
+    android:label="recipes"
     tools:context=".ui.fragments.recipes.RecipesFragment">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
