@@ -1,4 +1,4 @@
-package com.ozancanguz.mvvmrecipesapp
+package com.ozancanguz.mvvmrecipesapp.viewmodels
 
 import com.ozancanguz.mvvmrecipesapp.data.Repository
 
