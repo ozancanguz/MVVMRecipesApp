@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ozancanguz.mvvmrecipesapp.databinding.RecipesRowLayoutBinding
 import com.ozancanguz.mvvmrecipesapp.models.FoodRecipe
 import com.ozancanguz.mvvmrecipesapp.models.Result
+import com.ozancanguz.mvvmrecipesapp.util.RecipesDiffUtil.RecipesDiffUtil
 
 
 class RecipesAdapter:RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder>() {
@@ -41,7 +42,10 @@ class RecipesAdapter:RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder>() {
     }
 
     fun setData(newData: FoodRecipe){
+        val recipesDiffUtil=RecipesDiffUtil(recipe,newData.results)
+        val diffutil=DiffUtil.calculateDiff(recipesDiffUtil)
         recipe=newData.results
-        notifyDataSetChanged()
+        diffutil.dispatchUpdatesTo(this)
+
     }
 }
