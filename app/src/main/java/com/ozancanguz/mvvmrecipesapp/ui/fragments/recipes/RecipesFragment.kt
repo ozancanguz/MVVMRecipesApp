@@ -1,20 +1,25 @@
 package com.ozancanguz.mvvmrecipesapp.ui.fragments.recipes
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ozancanguz.mvvmrecipesapp.Adapters.RecipesAdapter
 import com.ozancanguz.mvvmrecipesapp.R
 import com.ozancanguz.mvvmrecipesapp.util.NetworkResult
+import com.ozancanguz.mvvmrecipesapp.util.observeOnce
 import com.ozancanguz.mvvmrecipesapp.viewmodels.MainViewModel
 import com.ozancanguz.mvvmrecipesapp.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_recipes.view.*
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
@@ -44,13 +49,33 @@ class RecipesFragment : Fragment() {
         //set up rv
         setRecyclerView()
 
-        requestApiData()
+       // requestApiData()
 
+        readDatabase()
 
 
 
 
         return mView
+    }
+    private fun setRecyclerView(){
+        mView.recyclerview.adapter=mAdapter
+        mView.recyclerview.layoutManager=LinearLayoutManager(requireContext())
+
+    }
+
+    private fun readDatabase() {
+        lifecycleScope.launch {
+            mainviewModel.readRecipes.observeOnce(viewLifecycleOwner, { database ->
+                if (database.isNotEmpty()) {
+                    Log.d("RecipesFragment", "readDatabase called!")
+                    mAdapter.setData(database[0].foodRecipe)
+
+                } else {
+                    requestApiData()
+                }
+            })
+        }
     }
     private fun requestApiData() {
         mainviewModel.getRecipes(recipesViewModel.applyQueries())
@@ -61,6 +86,7 @@ class RecipesFragment : Fragment() {
                     response.data?.let { mAdapter.setData(it) }
                 }
                 is NetworkResult.Error -> {
+                    loadDataFromCache()
 
                     Toast.makeText(
                         requireContext(),
@@ -75,13 +101,18 @@ class RecipesFragment : Fragment() {
         })
     }
 
-
-    private fun setRecyclerView(){
-        mView.recyclerview.adapter=mAdapter
-        mView.recyclerview.layoutManager=LinearLayoutManager(requireContext())
-
-
+    private fun loadDataFromCache() {
+        lifecycleScope.launch {
+            mainviewModel.readRecipes.observe(viewLifecycleOwner, {database->
+                if (database.isNotEmpty()) {
+                    mAdapter.setData(database[0].foodRecipe)
+                }
+            })
+        }
     }
+
+
+
 
 
 
