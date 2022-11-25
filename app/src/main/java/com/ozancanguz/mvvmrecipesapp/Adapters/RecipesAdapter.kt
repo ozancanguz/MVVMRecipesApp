@@ -14,7 +14,7 @@ import com.ozancanguz.mvvmrecipesapp.util.RecipesDiffUtil.RecipesDiffUtil
 class RecipesAdapter:RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder>() {
 
 
-    private var recipe= emptyList<Result>()
+    private var recipes= emptyList<Result>()
     // for data binding after converting recipesrowlayout as databinding layout
     class RecipesViewHolder(private val binding: RecipesRowLayoutBinding):RecyclerView.ViewHolder(binding.root) {
 
@@ -32,19 +32,19 @@ class RecipesAdapter:RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecipesViewHolder, position: Int) {
-      val currentResult=recipe[position]
-      holder.bind(currentResult)
+      val currenRecipe=recipes[position]
+      holder.bind(currenRecipe)
 
     }
 
     override fun getItemCount(): Int {
-        return recipe.size
+        return recipes.size
     }
 
     fun setData(newData: FoodRecipe){
-        val recipesDiffUtil=RecipesDiffUtil(recipe,newData.results)
+        val recipesDiffUtil=RecipesDiffUtil(recipes,newData.results)
         val diffutil=DiffUtil.calculateDiff(recipesDiffUtil)
-        recipe=newData.results
+        recipes=newData.results
         diffutil.dispatchUpdatesTo(this)
 
     }
