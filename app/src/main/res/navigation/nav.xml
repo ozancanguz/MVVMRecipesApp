@@ -14,6 +14,10 @@
         <action
             android:id="@+id/action_recipesFragment_to_recipeBottomSheet"
             app:destination="@id/recipeBottomSheet" />
+        <argument
+            android:name="backFromBottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/favoriteRecipes"
@@ -26,7 +30,7 @@
         android:label="fragment_food_joke"></fragment>
     <dialog
         android:id="@+id/recipeBottomSheet"
-        android:name="com.ozancanguz.mvvmrecipesapp.ui.fragments.recipes.recipesBototmSheet.RecipeBottomSheet"
+        android:name="com.ozancanguz.mvvmrecipesapp.ui.fragments.recipes.recipesBototmSheet.RecipesBottomSheet"
         android:label="fragment_recipe_bottom_sheet"
         tools:layout="@layout/fragment_recipe_bottom_sheet" >
         <action

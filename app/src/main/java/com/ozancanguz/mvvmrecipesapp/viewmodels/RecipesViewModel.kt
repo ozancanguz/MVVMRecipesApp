@@ -12,8 +12,9 @@ import com.ozancanguz.mvvmrecipesapp.util.Contants.Constants.Companion.QUERY_DIE
 import com.ozancanguz.mvvmrecipesapp.util.Contants.Constants.Companion.QUERY_FILL_INGREDIENTS
 import com.ozancanguz.mvvmrecipesapp.util.Contants.Constants.Companion.QUERY_NUMBER
 import com.ozancanguz.mvvmrecipesapp.util.Contants.Constants.Companion.QUERY_TYPE
+import javax.inject.Inject
 
-class RecipesViewModel(application: Application) : AndroidViewModel(application) {
+class RecipesViewModel @Inject constructor(application: Application,) : AndroidViewModel(application) {
 
     fun applyQueries(): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
