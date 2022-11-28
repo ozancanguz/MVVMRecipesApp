@@ -1,6 +1,7 @@
 package com.ozancanguz.mvvmrecipesapp.viewmodels
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.ozancanguz.mvvmrecipesapp.data.DataStoreRepository
@@ -25,14 +26,19 @@ class RecipesViewModel @Inject constructor(application: Application,
     private var mealType = DEFAULT_MEAL_TYPE
     private var dietType = DEFAULT_DIET_TYPE
 
+    var networkStatus = false
+    var backOnline = false
 
     val readMealAndDietType = dataStoreRepository.readMealAndDietType
+
+
 
 
     fun saveMealAndDietType(mealType: String, mealTypeId: Int, dietType: String, dietTypeId: Int) =
         viewModelScope.launch(Dispatchers.IO) {
             dataStoreRepository.saveMealAndDietType(mealType, mealTypeId, dietType, dietTypeId)
         }
+
 
 
     fun applyQueries(): HashMap<String, String> {
@@ -54,4 +60,5 @@ class RecipesViewModel @Inject constructor(application: Application,
 
         return queries
     }
+
 }
