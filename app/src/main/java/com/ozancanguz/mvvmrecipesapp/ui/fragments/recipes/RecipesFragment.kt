@@ -36,7 +36,7 @@ class RecipesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-        recipesViewModel = ViewModelProvider(requireActivity()).get(RecipesViewModel::class.java)
+        recipesViewModel = ViewModelProvider(requireActivity())[RecipesViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -52,8 +52,9 @@ class RecipesFragment : Fragment() {
         readDatabase()
 
         //recipes bottom sheet
+
         binding.recipesFab.setOnClickListener {
-            findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+            findNavController().navigate(R.id.action_recipesFragment_to_recipeBottomSheet)
         }
 
 
