@@ -15,7 +15,7 @@ interface FoodRecipesApi {
 
 
     @GET("/recipes/complexSearch")
-    suspend fun SearchRecipes(
+    suspend fun searchRecipes(
         @QueryMap searchQuery: Map<String, String>
     ): Response<FoodRecipe>
 
