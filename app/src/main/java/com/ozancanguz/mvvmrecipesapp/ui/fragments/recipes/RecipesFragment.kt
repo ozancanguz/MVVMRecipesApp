@@ -2,11 +2,11 @@ package com.ozancanguz.mvvmrecipesapp.ui.fragments.recipes
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.MenuHost
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -28,7 +28,7 @@ import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class RecipesFragment : Fragment() {
+class RecipesFragment : Fragment(),SearchView.OnQueryTextListener {
 
     private val args by navArgs<RecipesFragmentArgs>()
     private var _binding: FragmentRecipesBinding? = null
@@ -58,6 +58,9 @@ class RecipesFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.mainviewmodel = mainViewModel
 
+
+         //for menu
+        setHasOptionsMenu(true)
 
 
         setupRecyclerView()
@@ -92,6 +95,26 @@ class RecipesFragment : Fragment() {
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
 
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.recipes_menu, menu)
+
+        val search = menu.findItem(R.id.menu_search)
+        val searchView = search.actionView as? SearchView
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
+    }
+
+
+    override fun onQueryTextSubmit(p0: String?): Boolean {
+        return true
+    }
+
+    override fun onQueryTextChange(p0: String?): Boolean {
+return true
+    }
+
 
     private fun readDatabase() {
         lifecycleScope.launch {
@@ -139,9 +162,6 @@ class RecipesFragment : Fragment() {
             })
         }
     }
-
-
-
 
 
 
