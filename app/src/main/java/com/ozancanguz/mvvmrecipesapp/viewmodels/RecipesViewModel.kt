@@ -1,6 +1,7 @@
 package com.ozancanguz.mvvmrecipesapp.viewmodels
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import com.ozancanguz.mvvmrecipesapp.util.Contants.Constants.Companion.API_KEY
 import com.ozancanguz.mvvmrecipesapp.util.Contants.Constants.Companion.DEFAULT_DIET_TYPE
@@ -16,6 +17,8 @@ import javax.inject.Inject
 
 class RecipesViewModel @Inject constructor(application: Application,) : AndroidViewModel(application) {
 
+    private var networkStatus=false
+
     fun applyQueries(): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
 
@@ -27,6 +30,13 @@ class RecipesViewModel @Inject constructor(application: Application,) : AndroidV
         queries[QUERY_FILL_INGREDIENTS] = "true"
 
         return queries
+    }
+
+    fun showNetworkStatus(){
+        if(!networkStatus){
+             Toast.makeText(getApplication(),"welcome",Toast.LENGTH_LONG).show()
+        }
+
     }
 
 }

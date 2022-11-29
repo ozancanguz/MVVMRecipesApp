@@ -16,14 +16,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ozancanguz.mvvmrecipesapp.Adapters.RecipesAdapter
 import com.ozancanguz.mvvmrecipesapp.R
 import com.ozancanguz.mvvmrecipesapp.databinding.FragmentRecipesBinding
+import com.ozancanguz.mvvmrecipesapp.util.NetworkListener
 import com.ozancanguz.mvvmrecipesapp.util.NetworkResult
 import com.ozancanguz.mvvmrecipesapp.util.observeOnce
 import com.ozancanguz.mvvmrecipesapp.viewmodels.MainViewModel
 import com.ozancanguz.mvvmrecipesapp.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_recipes.view.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
 
@@ -34,12 +37,17 @@ class RecipesFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
     private lateinit var recipesViewModel: RecipesViewModel
     private val mAdapter by lazy { RecipesAdapter() }
+    private lateinit var networkListener: NetworkListener
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         recipesViewModel = ViewModelProvider(requireActivity())[RecipesViewModel::class.java]
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,8 +58,22 @@ class RecipesFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.mainviewmodel = mainViewModel
 
+
+
         setupRecyclerView()
         readDatabase()
+
+
+        //network listener // if there is no internet it logs false
+       lifecycleScope.launch{
+           networkListener= NetworkListener()
+           networkListener.checkNetworkAvailability(requireContext())
+               .collect{status ->
+                   Log.d("networkListener",status.toString())
+                   recipesViewModel.showNetworkStatus()
+               }
+
+       }
 
         //recipes bottom sheet
 
