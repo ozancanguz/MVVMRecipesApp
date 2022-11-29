@@ -16,4 +16,6 @@ class RemoteDataSource @Inject constructor(private val foodRecipesApi: FoodRecip
         return foodRecipesApi.SearchRecipes(searchQuery)
     }
 
+
+
 }
