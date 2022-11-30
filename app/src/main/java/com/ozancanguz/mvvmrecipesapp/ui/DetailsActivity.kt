@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
 import com.ozancanguz.mvvmrecipesapp.Adapters.PagerAdapter
 import com.ozancanguz.mvvmrecipesapp.R
-import com.ozancanguz.mvvmrecipesapp.ui.fragments.ingredientsFragment.IngredientsFragment
-import com.ozancanguz.mvvmrecipesapp.ui.fragments.instructionsFragment.InstructionsFragment
-import com.ozancanguz.mvvmrecipesapp.ui.fragments.overviewFragment.OverviewFragment
+import com.ozancanguz.mvvmrecipesapp.ui.fragments.ingredients.IngredientsFragment
+import com.ozancanguz.mvvmrecipesapp.ui.fragments.instructions.InstructionsFragment
+import com.ozancanguz.mvvmrecipesapp.ui.fragments.overview.OverviewFragment
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity() {

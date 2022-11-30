@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/drawable/gradient_overlay.xml" value="0.1" />
         <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/drawable/ic_foodjoke.xml" value="0.1" />
         <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/layout/activity_details.xml" value="0.20416666666666666" />
         <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
@@ -10,6 +11,7 @@
         <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/layout/fragment_favorite_recipes.xml" value="0.20416666666666666" />
         <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/layout/fragment_food_joke.xml" value="0.2" />
         <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/layout/fragment_ingredients.xml" value="0.1" />
+        <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/layout/fragment_overview.xml" value="0.20416666666666666" />
         <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/layout/fragment_recipe_bottom_sheet.xml" value="0.22" />
         <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/layout/fragment_recipes.xml" value="0.20416666666666666" />
         <entry key="..\:/RealAndroiApps/MVVMRecipesApp/app/src/main/res/layout/recipes_bottom_sheet.xml" value="0.18" />
