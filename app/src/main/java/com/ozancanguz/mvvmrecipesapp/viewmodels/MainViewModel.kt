@@ -8,7 +8,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.lifecycle.*
 
-import com.ozancanguz.mvvmrecipesapp.data.database.RecipesEntity
+import com.ozancanguz.mvvmrecipesapp.data.database.Entities.RecipesEntity
 import com.ozancanguz.mvvmrecipesapp.models.FoodRecipe
 import com.ozancanguz.mvvmrecipesapp.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel

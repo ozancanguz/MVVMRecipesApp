@@ -1,4 +1,4 @@
-package com.ozancanguz.mvvmrecipesapp.data.database
+package com.ozancanguz.mvvmrecipesapp.data.database.Entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

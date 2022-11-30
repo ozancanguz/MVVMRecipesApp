@@ -1,7 +1,7 @@
 package com.ozancanguz.mvvmrecipesapp.data
 
 import com.ozancanguz.mvvmrecipesapp.data.database.RecipesDao
-import com.ozancanguz.mvvmrecipesapp.data.database.RecipesEntity
+import com.ozancanguz.mvvmrecipesapp.data.database.Entities.RecipesEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
