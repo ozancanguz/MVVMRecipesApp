@@ -1,13 +1,14 @@
 package com.ozancanguz.mvvmrecipesapp.Adapters
 
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-
 import com.ozancanguz.mvvmrecipesapp.data.database.Entities.FavoritesEntity
 import com.ozancanguz.mvvmrecipesapp.databinding.FavoriteRecipesRowLayoutBinding
 import com.ozancanguz.mvvmrecipesapp.util.RecipesDiffUtil.RecipesDiffUtil
+
 
 class FavoriteRecipesAdapter : RecyclerView.Adapter<FavoriteRecipesAdapter.MyViewHolder>() {
 
@@ -44,7 +45,7 @@ class FavoriteRecipesAdapter : RecyclerView.Adapter<FavoriteRecipesAdapter.MyVie
         return favoriteRecipes.size
     }
 
-    fun setData(newFavoriteRecipes: List<FavoritesEntity>){
+    fun setData(newFavoriteRecipes: List<FavoritesEntity>) {
         val favoriteRecipesDiffUtil =
             RecipesDiffUtil(favoriteRecipes, newFavoriteRecipes)
         val diffUtilResult = DiffUtil.calculateDiff(favoriteRecipesDiffUtil)
