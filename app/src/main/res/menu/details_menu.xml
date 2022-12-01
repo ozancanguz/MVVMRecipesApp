@@ -4,7 +4,7 @@
 
 
     <item android:id="@+id/savetofavmenu"
-         android:icon="@drawable/ic_star"
+         android:icon="@drawable/ic_star2"
         android:title="Save to favorites"
         app:showAsAction="ifRoom"></item>
 
