@@ -10,6 +10,7 @@ import androidx.lifecycle.*
 import com.ozancanguz.mvvmrecipesapp.data.database.Entities.FavoritesEntity
 
 import com.ozancanguz.mvvmrecipesapp.data.database.Entities.RecipesEntity
+import com.ozancanguz.mvvmrecipesapp.models.FoodJoke
 import com.ozancanguz.mvvmrecipesapp.models.FoodRecipe
 import com.ozancanguz.mvvmrecipesapp.ui.fragments.favorites.FavoriteRecipes
 import com.ozancanguz.mvvmrecipesapp.util.NetworkResult
@@ -63,6 +64,8 @@ class MainViewModel @Inject constructor(
 
     var searchedRecipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
 
+    var foodJokeResponse:MutableLiveData<NetworkResult<FoodJoke>> = MutableLiveData()
+
 
 
     fun getRecipes(queries: Map<String, String>) = viewModelScope.launch {
@@ -72,6 +75,11 @@ class MainViewModel @Inject constructor(
     fun searchRecipes(searchQuery: Map<String, String>) = viewModelScope.launch {
         searchRecipesSafeCall(searchQuery)
     }
+
+    fun getFoodJoke(apiKey:String)=viewModelScope.launch {
+        getFoodJokeSafeCall(apiKey)
+    }
+
 
 
 
@@ -107,6 +115,20 @@ class MainViewModel @Inject constructor(
             searchedRecipesResponse.value = NetworkResult.Error("No Internet Connection.")
         }
     }
+    private suspend fun getFoodJokeSafeCall(apiKey: String) {
+        foodJokeResponse.value = NetworkResult.Loading()
+        if (hasInternetConnection()) {
+            try {
+                val response = repository.remote.getFoodJoke(apiKey)
+                foodJokeResponse.value = handleFoodJokesResponse(response)
+            } catch (e: Exception) {
+                foodJokeResponse.value = NetworkResult.Error("Recipes not found.")
+            }
+        } else {
+            foodJokeResponse.value = NetworkResult.Error("No Internet Connection.")
+        }
+
+    }
 
     // we offline cache the data and insert
     private fun offlineCacheRecipes(foodRecipe: FoodRecipe) {
@@ -135,6 +157,26 @@ class MainViewModel @Inject constructor(
             }
         }
     }
+
+    private fun handleFoodJokesResponse(response: Response<FoodJoke>): NetworkResult<FoodJoke>? {
+        when {
+            response.message().toString().contains("timeout") -> {
+                return NetworkResult.Error("Timeout")
+            }
+            response.code() == 402 -> {
+                return NetworkResult.Error("API Key Limited.")
+            }
+            response.isSuccessful -> {
+                val FoodJoke = response.body()
+                return NetworkResult.Success(FoodJoke!!)
+            }
+            else -> {
+                return NetworkResult.Error(response.message())
+            }
+        }
+    }
+
+
 
     // 1
     private fun hasInternetConnection(): Boolean {
