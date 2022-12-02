@@ -43,11 +43,14 @@ class RecipesViewModel @Inject constructor(application: Application,) : AndroidV
 
         return queries
     }
+    /*
     fun showNetworkStatus(){
         if(!networkStatus){
              Toast.makeText(getApplication(),"welcome",Toast.LENGTH_LONG).show()
         }
 
     }
+
+     */
 
 }

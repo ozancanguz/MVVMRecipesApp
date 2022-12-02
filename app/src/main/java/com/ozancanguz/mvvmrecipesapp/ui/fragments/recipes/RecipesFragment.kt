@@ -71,7 +71,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
            networkListener.checkNetworkAvailability(requireContext())
                .collect{status ->
                    Log.d("networkListener",status.toString())
-                   recipesViewModel.showNetworkStatus()
+
                }
 
        }
