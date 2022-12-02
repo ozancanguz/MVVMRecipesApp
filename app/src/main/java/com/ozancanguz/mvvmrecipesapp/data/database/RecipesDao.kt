@@ -2,7 +2,9 @@ package com.ozancanguz.mvvmrecipesapp.data.database
 
 import androidx.room.*
 import com.ozancanguz.mvvmrecipesapp.data.database.Entities.FavoritesEntity
+import com.ozancanguz.mvvmrecipesapp.data.database.Entities.FoodJokeEntity
 import com.ozancanguz.mvvmrecipesapp.data.database.Entities.RecipesEntity
+import com.ozancanguz.mvvmrecipesapp.models.FoodJoke
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -25,5 +27,14 @@ interface RecipesDao {
 
     @Query("DELETE FROM favorite_recipes_table")
     suspend fun deleteAllFavoriteRecipes()
+
+
+    //2 for offline caching
+    @Insert(onConflict = OnConflictStrategy.REPLACE )
+    suspend fun insertFoodJoke(foodJokeEntity: FoodJokeEntity)
+
+    @Query("select* from food_joke_table Order by id  ASC")
+    fun readFoodJoke():Flow<List<FoodJokeEntity>>
+
 
 }

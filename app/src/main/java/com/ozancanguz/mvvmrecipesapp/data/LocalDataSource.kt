@@ -1,6 +1,7 @@
 package com.ozancanguz.mvvmrecipesapp.data
 
 import com.ozancanguz.mvvmrecipesapp.data.database.Entities.FavoritesEntity
+import com.ozancanguz.mvvmrecipesapp.data.database.Entities.FoodJokeEntity
 import com.ozancanguz.mvvmrecipesapp.data.database.RecipesDao
 import com.ozancanguz.mvvmrecipesapp.data.database.Entities.RecipesEntity
 import kotlinx.coroutines.flow.Flow
@@ -38,6 +39,16 @@ class LocalDataSource @Inject constructor(
     // delete all favorite recipes
     suspend fun deleteAllFavoriteRecipes() {
         recipesDao.deleteAllFavoriteRecipes()
+    }
+
+
+    //4 for offline caching
+    fun readAllJoke():Flow<List<FoodJokeEntity>>{
+       return recipesDao.readFoodJoke()
+    }
+
+    suspend fun insertFoodJoke(foodJokeEntity: FoodJokeEntity){
+        return recipesDao.insertFoodJoke(foodJokeEntity)
     }
 
 
