@@ -9,7 +9,6 @@ import com.ozancanguz.mvvmrecipesapp.util.Contants.Constants.Companion.FAVORITER
 @Entity(tableName = FAVORITERECIPES_TABLE)
 class FavoritesEntity(
     @PrimaryKey(autoGenerate = true)
-    var id:Int,
-    var result:Result
-
+    var id: Int,
+    var result: Result
 )
