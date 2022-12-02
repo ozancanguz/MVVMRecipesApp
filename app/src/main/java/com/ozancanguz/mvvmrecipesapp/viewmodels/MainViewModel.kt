@@ -13,7 +13,7 @@ import com.ozancanguz.mvvmrecipesapp.data.database.Entities.FoodJokeEntity
 import com.ozancanguz.mvvmrecipesapp.data.database.Entities.RecipesEntity
 import com.ozancanguz.mvvmrecipesapp.models.FoodJoke
 import com.ozancanguz.mvvmrecipesapp.models.FoodRecipe
-import com.ozancanguz.mvvmrecipesapp.ui.fragments.favorites.FavoriteRecipes
+
 import com.ozancanguz.mvvmrecipesapp.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
