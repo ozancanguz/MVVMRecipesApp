@@ -1,6 +1,7 @@
 package com.ozancanguz.mvvmrecipesapp.data
 
 import com.ozancanguz.mvvmrecipesapp.data.network.FoodRecipesApi
+import com.ozancanguz.mvvmrecipesapp.models.FoodJoke
 import com.ozancanguz.mvvmrecipesapp.models.FoodRecipe
 import retrofit2.Response
 import javax.inject.Inject
@@ -16,6 +17,9 @@ class RemoteDataSource @Inject constructor(private val foodRecipesApi: FoodRecip
         return foodRecipesApi.searchRecipes(searchQuery)
     }
 
+    suspend fun getFoodJoke(apiKey:String):Response<FoodJoke>{
+        return foodRecipesApi.getFoodJokes(apiKey)
+    }
 
 
 }
